@@ -53,7 +53,7 @@ export default function SolutionPage() {
       <div className="container mx-auto max-w-4xl py-12 px-4 space-y-16">
         <div className="flex flex-col items-center w-full">
              <Image
-                src="https://i.imgur.com/POLpDFS.png"
+                src="https://i.imgur.com/FuMHzNS.png"
                 alt="Soninho sem Peito Logo"
                 width={100}
                 height={100}

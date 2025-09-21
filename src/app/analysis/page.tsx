@@ -73,7 +73,7 @@ function AnalysisContent() {
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <div className="flex flex-col items-center w-full flex-1 justify-center">
         <Image
-          src="https://i.imgur.com/POLpDFS.png"
+          src="https://i.imgur.com/FuMHzNS.png"
           alt="Soninho sem Peito Logo"
           width={100}
           height={100}
