@@ -154,7 +154,10 @@ export default function SolutionPage() {
         </Card>
 
         {/* Garantia */}
-        <div className="text-center border-2 border-dashed border-primary/50 p-6 rounded-lg">
+        <div className="text-center border-2 border-dashed border-primary/50 p-6 rounded-lg flex flex-col items-center">
+            <div className="relative h-32 w-32 mb-4">
+                <Image src="https://i.imgur.com/6OitfPt.png" alt="Selo de Garantia" fill className="object-contain" sizes="128px" />
+            </div>
             <h3 className="text-2xl font-bold font-headline text-primary">O seu bebê dormindo sem ser mamando ou o seu dinheiro de volta!</h3>
             <p className="mt-4 text-muted-foreground">Todo o passo a passo deve ser feito por 3 dias consecutivos, esse é o tempo que várias mamães precisaram para verem seus bebês dormindo melhor sem o peito. Por esse motivo, com a nossa garantia de 7 dias, você não corre nenhum risco. Se em 7 dias ou menos, você aplicar as técnicas e não ver nenhum resultado, devolvemos 100% do seu dinheiro.</p>
         </div>
