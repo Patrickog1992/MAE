@@ -46,16 +46,16 @@ export function QuizClient() {
 
   return (
     <Card className="w-full max-w-2xl shadow-2xl bg-card">
-      <CardHeader>
+      <CardHeader className="p-4 md:p-6">
         <Progress value={stepData.progress} className="w-full h-2 mb-4" />
-        <CardTitle className="text-3xl text-center font-headline">{stepData.title}</CardTitle>
+        <CardTitle className="text-2xl md:text-3xl text-center font-headline">{stepData.title}</CardTitle>
         {stepData.description && (
-          <CardDescription className="text-center text-lg whitespace-pre-line pt-2">
+          <CardDescription className="text-center text-base md:text-lg whitespace-pre-line pt-2">
             {stepData.description}
           </CardDescription>
         )}
       </CardHeader>
-      <CardContent className="flex flex-col items-center gap-6">
+      <CardContent className="flex flex-col items-center gap-4 md:gap-6 p-4 md:p-6">
         {imageDetails && (
           <div className="relative w-full aspect-[3/2] rounded-lg overflow-hidden">
             <Image
@@ -70,10 +70,10 @@ export function QuizClient() {
         )}
 
         {stepData.bullets && (
-          <ul className="space-y-2 text-lg w-full max-w-md">
+          <ul className="space-y-2 text-base md:text-lg w-full max-w-md">
             {stepData.bullets.map((bullet, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <Check className="h-6 w-6 text-primary" />
+              <li key={index} className="flex items-start md:items-center gap-3">
+                <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1 md:mt-0" />
                 <span>{bullet}</span>
               </li>
             ))}
@@ -92,14 +92,14 @@ export function QuizClient() {
               <Button
                 key={index}
                 variant="outline"
-                className="h-auto p-4 text-base justify-start text-left flex-col items-start gap-3 transition-all duration-300 hover:shadow-lg hover:border-primary"
+                className="h-auto p-4 text-sm md:text-base justify-start text-left flex-col items-start gap-3 transition-all duration-300 hover:shadow-lg hover:border-primary"
                 onClick={() => handleAnswer(option)}
               >
                 <div className="flex items-center gap-3">
                   {option.icon && getIcon(option.icon)}
                   <span className="font-semibold">{option.text}</span>
                 </div>
-                {option.subtext && <p className="text-sm text-muted-foreground whitespace-normal">{option.subtext}</p>}
+                {option.subtext && <p className="text-xs md:text-sm text-muted-foreground whitespace-normal">{option.subtext}</p>}
               </Button>
             ))}
           </div>
