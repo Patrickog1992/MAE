@@ -2,20 +2,12 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Poppins } from 'next/font/google';
-import { Belleza } from 'next/font/google';
 
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-poppins',
   weight: ['400', '600', '700'],
-});
-
-const belleza = Belleza({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-belleza',
-  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -29,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning className={`${poppins.variable} ${belleza.variable}`}>
+    <html lang="pt-BR" suppressHydrationWarning className={`${poppins.variable}`}>
       <head>
       </head>
       <body>
