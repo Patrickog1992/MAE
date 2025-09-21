@@ -9,40 +9,40 @@ const testimonials = [
   {
     name: 'Juliana S.',
     text: 'Funciona mesmo! Em dois dias meu filho já não precisava mais mamar para dormir. Foi um alívio!',
-    avatar: 'https://i.imgur.com/gpl6Hw5.jpg',
+    avatar: 'https://i.imgur.com/Sza1ZfT.png',
   },
   {
     name: 'Fernanda L.',
     text: 'Eu estava exausta e sem esperança. O método é super gentil e funcionou mais rápido do que eu imaginava. Recomendo demais!',
-    avatar: 'https://i.imgur.com/T0eei5V.jpg',
+    avatar: 'https://i.imgur.com/GJZpDHa.png',
   },
   {
     name: 'Camila P.',
     text: 'O melhor investimento que fiz. Ter minhas noites de sono de volta não tem preço. Meu relacionamento com meu marido melhorou 100%.',
-    avatar: 'https://i.imgur.com/E0rC88u.jpg',
+    avatar: 'https://i.imgur.com/NVXnmUf.jpg',
   },
   {
     name: 'Amanda R.',
     text: 'Tinha medo de ser um método de deixar chorando, mas é o oposto! Muito carinhoso e meu bebê aceitou super bem.',
-    avatar: 'https://i.imgur.com/D4sPzpf.jpg',
+    avatar: 'https://i.imgur.com/naq9F89.jpg',
   },
   {
     name: 'Beatriz M.',
     text: 'Três dias. Foi o que precisei. Inacreditável. Só posso agradecer por terem criado algo tão eficaz e simples de aplicar.',
-    avatar: 'https://i.imgur.com/A6jA8GQ.jpg',
+    avatar: 'https://i.imgur.com/UA8o4Kz.png',
   },
   {
     name: 'Larissa F.',
     text: 'Se você está na dúvida, apenas compre. Vale cada centavo. Minha vida mudou da água para o vinho.',
-    avatar: 'https://i.imgur.com/Qj4SFzF.jpg',
+    avatar: 'https://i.imgur.com/SPsVs9s.jpg',
   },
 ];
 
 const TimelineStep = ({ day, title, description }: { day: string; title: string; description: string }) => (
   <div className="flex items-center gap-4">
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center self-stretch">
       <div className="w-px flex-1 bg-primary -mb-1" />
-      <div className="bg-primary text-primary-foreground rounded-full h-8 w-8 flex items-center justify-center font-bold">{day}</div>
+      <div className="bg-primary text-primary-foreground rounded-full h-8 w-8 flex items-center justify-center font-bold text-lg">{day}</div>
       <div className="w-px flex-1 bg-primary -mt-1" />
     </div>
     <div>
