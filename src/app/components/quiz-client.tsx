@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import { quizSteps, QuizOption, getIcon } from '@/lib/quiz-data';
+import { quizSteps, QuizOption, getIcon } from '@/lib/quiz-data.tsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -11,11 +11,28 @@ import { Check } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function QuizClient() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const router = useRouter();
+  
+  useEffect(() => {
+    const step = searchParams.get('step');
+    if (step && !isNaN(parseInt(step))) {
+      const stepNumber = parseInt(step);
+      if(stepNumber >= 0 && stepNumber < quizSteps.length) {
+        setCurrentStep(stepNumber);
+      }
+    }
+  }, [searchParams]);
+
 
   const handleNext = () => {
+     if (stepData.questionKey === 'intro2') {
+      router.push('/reportagem');
+      return;
+    }
+    
     if (currentStep < quizSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
@@ -92,7 +109,7 @@ export function QuizClient() {
               <Button
                 key={index}
                 variant="outline"
-                className="h-auto p-4 text-sm md:text-base justify-start text-left flex-col items-start gap-3 transition-all duration-300 hover:shadow-lg hover:border-primary"
+                className="h-auto p-4 text-sm md:text-base justify-start text-left flex-col items-start gap-3 transition-all duration-300 hover:shadow-lg hover:border-primary whitespace-normal text-wrap"
                 onClick={() => handleAnswer(option)}
               >
                 <div className="flex items-center gap-3">

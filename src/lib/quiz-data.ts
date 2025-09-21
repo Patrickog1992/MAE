@@ -3,7 +3,7 @@ import { BedDouble, CheckSquare, Clock, Flower2, HeartHandshake, HeartPulse, Lea
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export interface QuizOption {
-  icon?: React.ReactNode;
+  icon?: string;
   text: string;
   subtext?: string;
 }
@@ -45,7 +45,7 @@ export const quizSteps: QuizStep[] = [
     title: 'Mais de 32 mil',
     description: 'É o número de mães que já ajudamos a conquistarem noites tranquilas, através deste projeto.',
     image: { id: 'quiz-intro-2', width: 600, height: 400 },
-    buttonText: 'Continuar',
+    buttonText: 'VEJA A REPORTAGEM',
     questionKey: 'intro2',
     progress: 10,
   },
@@ -53,10 +53,10 @@ export const quizSteps: QuizStep[] = [
     type: 'question',
     title: 'Para começar, me conte uma coisa boa: Qual dessas conquistas você mais sonha realizar?',
     options: [
-      { icon: <Flower2 className="h-6 w-6 text-accent" />, text: 'Ter mais tempo para cuidar de mim mesma' },
-      { icon: <BedDouble className="h-6 w-6 text-accent" />, text: 'Ver meu bebê dormindo tranquilo a noite toda' },
-      { icon: <Zap className="h-6 w-6 text-accent" />, text: 'Recuperar minha energia e disposição' },
-      { icon: <HeartHandshake className="h-6 w-6 text-accent" />, text: 'Ter momentos especiais com meu parceiro(a)' },
+      { icon: 'Flower2', text: 'Ter mais tempo para cuidar de mim mesma' },
+      { icon: 'BedDouble', text: 'Ver meu bebê dormindo tranquilo a noite toda' },
+      { icon: 'Zap', text: 'Recuperar minha energia e disposição' },
+      { icon: 'HeartHandshake', text: 'Ter momentos especiais com meu parceiro(a)' },
     ],
     buttonText: '',
     questionKey: 'dream_achievement',
@@ -135,10 +135,10 @@ export const quizSteps: QuizStep[] = [
     title: 'Você sabia?',
     description: 'Se seu bebê tem de 7 a 12 meses, você já passou aproximadamente: 990 horas acordada durante a noite (equivalente a 41 dias inteiros sem dormir direito)\n\nIsso está afetando outras áreas da sua vida? Selecione a opção mais afetada.',
     options: [
-      { icon: <HeartPulse className="h-6 w-6 text-accent" />, text: 'Sim, meu relacionamento com meu parceiro(a)' },
-      { icon: <Clock className="h-6 w-6 text-accent" />, text: 'Sim, minha produtividade durante o dia' },
-      { icon: <Leaf className="h-6 w-6 text-accent" />, text: 'Sim, minha saúde física e mental' },
-      { icon: <CheckSquare className="h-6 w-6 text-accent" />, text: 'Sim, todas as opções acima' },
+      { icon: 'HeartPulse', text: 'Sim, meu relacionamento com meu parceiro(a)' },
+      { icon: 'Clock', text: 'Sim, minha produtividade durante o dia' },
+      { icon: 'Leaf', text: 'Sim, minha saúde física e mental' },
+      { icon: 'CheckSquare', text: 'Sim, todas as opções acima' },
     ],
     buttonText: '',
     questionKey: 'life_impact',
@@ -157,3 +157,20 @@ export const quizSteps: QuizStep[] = [
     progress: 90,
   },
 ];
+
+
+const iconComponents: { [key: string]: React.FC<any> } = {
+  Flower2: (props) => <Flower2 {...props} />,
+  BedDouble: (props) => <BedDouble {...props} />,
+  Zap: (props) => <Zap {...props} />,
+  HeartHandshake: (props) => <HeartHandshake {...props} />,
+  HeartPulse: (props) => <HeartPulse {...props} />,
+  Clock: (props) => <Clock {...props} />,
+  Leaf: (props) => <Leaf {...props} />,
+  CheckSquare: (props) => <CheckSquare {...props} />,
+};
+
+export const getIcon = (name: string) => {
+  const IconComponent = iconComponents[name];
+  return IconComponent ? <IconComponent className="h-6 w-6 text-accent flex-shrink-0" /> : null;
+};

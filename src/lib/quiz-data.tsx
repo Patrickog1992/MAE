@@ -45,7 +45,7 @@ export const quizSteps: QuizStep[] = [
     title: 'Mais de 32 mil',
     description: 'É o número de mães que já ajudamos a conquistarem noites tranquilas, através deste projeto.',
     image: { id: 'quiz-intro-2', width: 600, height: 400 },
-    buttonText: 'Continuar',
+    buttonText: 'VEJA A REPORTAGEM',
     questionKey: 'intro2',
     progress: 10,
   },
@@ -158,18 +158,19 @@ export const quizSteps: QuizStep[] = [
   },
 ];
 
-const iconComponents: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
-  Flower2,
-  BedDouble,
-  Zap,
-  HeartHandshake,
-  HeartPulse,
-  Clock,
-  Leaf,
-  CheckSquare,
+
+const iconComponents: { [key: string]: React.FC<any> } = {
+  Flower2: (props) => <Flower2 {...props} />,
+  BedDouble: (props) => <BedDouble {...props} />,
+  Zap: (props) => <Zap {...props} />,
+  HeartHandshake: (props) => <HeartHandshake {...props} />,
+  HeartPulse: (props) => <HeartPulse {...props} />,
+  Clock: (props) => <Clock {...props} />,
+  Leaf: (props) => <Leaf {...props} />,
+  CheckSquare: (props) => <CheckSquare {...props} />,
 };
 
 export const getIcon = (name: string) => {
-  const Icon = iconComponents[name];
-  return Icon ? <Icon className="h-6 w-6 text-accent" /> : null;
+  const IconComponent = iconComponents[name];
+  return IconComponent ? <IconComponent className="h-6 w-6 text-accent flex-shrink-0" /> : null;
 };
