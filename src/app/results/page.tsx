@@ -17,14 +17,14 @@ const BeforeAfterSection = ({ title, imageId, items, checkColor }: { title: stri
     <div className="text-center space-y-4">
       <h3 className="text-2xl font-headline">{title}</h3>
       {imageDetails && (
-        <div className="relative w-full max-w-md mx-auto aspect-auto rounded-lg overflow-hidden">
+        <div className="relative w-full max-w-md mx-auto aspect-video">
           <Image
             src={imageDetails.imageUrl}
             alt={imageDetails.description}
-            width={400}
-            height={400}
-            className="object-contain mx-auto"
+            fill
+            className="object-contain"
             data-ai-hint={imageDetails.imageHint}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
       )}
@@ -78,6 +78,9 @@ export default function ResultsPage() {
     { title: 'Nível de saúde', description: 'Você está perdendo aproximadamente 20 horas de sono por semana' }
   ];
 
+  const handleSeeSolution = () => {
+    router.push('/loading-solution');
+  };
 
   if (!result) {
     return (
@@ -89,7 +92,7 @@ export default function ResultsPage() {
 
   return (
     <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-      <Card className="w-full max-w-3xl shadow-2xl">
+      <Card className="w-full max-w-4xl shadow-2xl">
         <CardHeader className="text-center">
           <CardTitle className="text-4xl font-headline">Resultado da sua análise</CardTitle>
           <CardDescription className="text-lg pt-2">
@@ -113,9 +116,9 @@ export default function ResultsPage() {
           </div>
 
           <AnalysisPoints points={analysisPoints} />
-
+          
           <div className="text-center pt-4">
-            <Button size="lg" className="text-lg font-bold">
+            <Button size="lg" className="text-lg font-bold" onClick={handleSeeSolution}>
               Ver Solução Recomendada
             </Button>
           </div>
