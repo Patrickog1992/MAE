@@ -97,7 +97,7 @@ export function QuizClient() {
               >
                 <div className="flex items-center gap-3">
                   {option.icon && getIcon(option.icon)}
-                  <span className="font-semibold">{option.text}</span>
+                  <span className="font-semibold whitespace-normal">{option.text}</span>
                 </div>
                 {option.subtext && <p className="text-xs md:text-sm text-muted-foreground whitespace-normal">{option.subtext}</p>}
               </Button>
