@@ -29,10 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${belleza.variable}`}>
+    <html lang="pt-BR" suppressHydrationWarning className={`${poppins.variable} ${belleza.variable}`}>
       <head>
       </head>
-      <body className="font-body antialiased">
+      <body>
         {children}
         <Toaster />
       </body>

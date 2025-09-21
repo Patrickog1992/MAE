@@ -45,7 +45,7 @@ export function QuizClient() {
   const imageDetails = stepData.image ? PlaceHolderImages.find(img => img.id === stepData.image!.id) : null;
 
   return (
-    <Card className="w-full max-w-2xl shadow-2xl bg-card/80 backdrop-blur-sm">
+    <Card className="w-full max-w-2xl shadow-2xl">
       <CardHeader>
         <Progress value={stepData.progress} className="w-full h-2 mb-4" />
         <CardTitle className="text-3xl text-center font-headline">{stepData.title}</CardTitle>
