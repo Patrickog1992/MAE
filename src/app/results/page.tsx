@@ -17,14 +17,14 @@ const BeforeAfterSection = ({ title, imageId, items, checkColor }: { title: stri
     <div className="text-center space-y-4">
       <h3 className="text-2xl font-headline">{title}</h3>
       {imageDetails && (
-        <div className="relative w-full max-w-md mx-auto aspect-[3/2] rounded-lg overflow-hidden ring-2 ring-primary/50">
+        <div className="relative w-full max-w-md mx-auto aspect-auto rounded-lg overflow-hidden">
           <Image
             src={imageDetails.imageUrl}
             alt={imageDetails.description}
-            fill
-            className="object-cover"
+            width={400}
+            height={400}
+            className="object-contain mx-auto"
             data-ai-hint={imageDetails.imageHint}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
       )}
@@ -46,11 +46,13 @@ export default function ResultsPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const resultData = sessionStorage.getItem('analysisResult');
-    if (resultData) {
-      setResult(JSON.parse(resultData));
-    } else {
-      router.push('/');
+    if (typeof window !== 'undefined') {
+      const resultData = sessionStorage.getItem('analysisResult');
+      if (resultData) {
+        setResult(JSON.parse(resultData));
+      } else {
+        router.push('/');
+      }
     }
   }, [router]);
   
