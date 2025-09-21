@@ -13,10 +13,16 @@
       "imageHint": "mother baby"
     },
     {
-      "id": "quiz-results",
-      "description": "A happy and rested mother.",
-      "imageUrl": "https://picsum.photos/seed/d0efBEf/600/400",
-      "imageHint": "happy mother"
+      "id": "quiz-results-before",
+      "description": "A tired mother trying to get her baby to sleep.",
+      "imageUrl": "https://i.imgur.com/d0efBEf.png",
+      "imageHint": "tired mother"
+    },
+    {
+      "id": "quiz-results-after",
+      "description": "A happy and rested mother with her sleeping baby.",
+      "imageUrl": "https://i.imgur.com/dn9wi1S.png",
+      "imageHint": "happy mother baby"
     }
   ]
 }
