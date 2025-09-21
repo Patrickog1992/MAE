@@ -95,10 +95,6 @@ export default function ResultsPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-12 p-4 md:p-8">
-          <div className="p-6 bg-secondary/50 rounded-lg border">
-            <p className="text-lg whitespace-pre-wrap">{result.analysis}</p>
-          </div>
-
           <div className="grid md:grid-cols-2 gap-12">
             <BeforeAfterSection 
               title="Você antes do Soninho sem peito"
