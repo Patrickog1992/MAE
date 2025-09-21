@@ -6,6 +6,7 @@ import { analyzeQuizResponses, type QuizResponsesOutput } from '@/ai/flows/analy
 import { Progress } from '@/components/ui/progress';
 import { Check } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
 
 function AnalysisContent() {
   const router = useRouter();
@@ -69,23 +70,35 @@ function AnalysisContent() {
   ];
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-lg text-center shadow-2xl">
-        <CardHeader>
-          <CardTitle className="text-3xl font-headline">Analisando suas respostas...</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6 p-8">
-          <Progress value={progress} className="w-full h-3" />
-          <ul className="text-left space-y-3 text-lg">
-            {loadingSteps.map((step, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <Check className="h-6 w-6 text-primary" />
-                <span>{step}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <div className="flex flex-col items-center w-full flex-1 justify-center">
+        <Image
+          src="https://i.imgur.com/POLpDFS.png"
+          alt="Soninho sem Peito Logo"
+          width={100}
+          height={100}
+          className="mb-6"
+        />
+        <Card className="w-full max-w-lg text-center shadow-2xl">
+          <CardHeader>
+            <CardTitle className="text-3xl font-headline">Analisando suas respostas...</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6 p-8">
+            <Progress value={progress} className="w-full h-3" />
+            <ul className="text-left space-y-3 text-lg">
+              {loadingSteps.map((step, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <Check className="h-6 w-6 text-primary" />
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+      <footer className="w-full text-center p-4 text-sm text-muted-foreground mt-8">
+        Soninho sem Peito todos os direitos reservados 2025
+      </footer>
     </div>
   );
 }

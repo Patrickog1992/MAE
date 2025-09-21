@@ -51,6 +51,15 @@ export default function SolutionPage() {
   return (
     <main className="bg-background text-foreground">
       <div className="container mx-auto max-w-4xl py-12 px-4 space-y-16">
+        <div className="flex flex-col items-center w-full">
+             <Image
+                src="https://i.imgur.com/POLpDFS.png"
+                alt="Soninho sem Peito Logo"
+                width={100}
+                height={100}
+                className="mb-6"
+            />
+        </div>
 
         {/* Header */}
         <div className="text-center space-y-4">
@@ -194,6 +203,9 @@ export default function SolutionPage() {
         </div>
 
       </div>
+       <footer className="w-full text-center p-4 text-sm text-muted-foreground mt-8">
+            Soninho sem Peito todos os direitos reservados 2025
+        </footer>
     </main>
   );
 }
