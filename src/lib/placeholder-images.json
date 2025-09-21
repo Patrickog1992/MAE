@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "quiz-intro-1",
+      "description": "A peaceful, sleeping baby.",
+      "imageUrl": "https://picsum.photos/seed/ljFwzhx/600/400",
+      "imageHint": "sleeping baby"
+    },
+    {
+      "id": "quiz-intro-2",
+      "description": "A happy mother holding her baby.",
+      "imageUrl": "https://picsum.photos/seed/mEzW5yd/600/400",
+      "imageHint": "mother baby"
+    },
+    {
+      "id": "quiz-results",
+      "description": "A happy and rested mother.",
+      "imageUrl": "https://picsum.photos/seed/d0efBEf/600/400",
+      "imageHint": "happy mother"
+    }
+  ]
 }
