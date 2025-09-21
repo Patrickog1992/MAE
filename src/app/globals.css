@@ -6,10 +6,10 @@
   :root {
     --background: 350 100% 98%;
     --foreground: 0 0% 10%;
-    --card: 240 67% 97%;
-    --card-foreground: 240 20% 25%;
-    --popover: 240 67% 97%;
-    --popover-foreground: 240 20% 25%;
+    --card: 350 100% 98%;
+    --card-foreground: 0 0% 10%;
+    --popover: 350 100% 98%;
+    --popover-foreground: 0 0% 10%;
     --primary: 350 80% 60%;
     --primary-foreground: 350 60% 98%;
     --secondary: 340 100% 95%;
