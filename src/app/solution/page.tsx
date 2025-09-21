@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ShieldCheck } from 'lucide-react';
+import { Check, ShieldCheck, Star, Calendar, Eye, Rocket } from 'lucide-react';
 import Image from 'next/image';
 
 const testimonials = [
@@ -38,18 +38,12 @@ const testimonials = [
   },
 ];
 
-const TimelineStep = ({ day, title, description }: { day: string; title: string; description: string }) => (
-  <div className="flex items-center gap-4">
-    <div className="flex flex-col items-center self-stretch">
-      <div className="w-px flex-1 bg-primary -mb-1" />
-      <div className="bg-primary text-primary-foreground rounded-full h-8 w-8 flex items-center justify-center font-bold text-lg">{day}</div>
-      <div className="w-px flex-1 bg-primary -mt-1" />
-    </div>
-    <div>
+const TimelineStep = ({ icon, title, description, isCurrent }: { icon: React.ReactNode; title: string; description: string, isCurrent?: boolean }) => (
+    <Card className={`text-center p-4 md:p-6 flex-1 ${isCurrent ? 'bg-secondary/50 border-primary' : ''}`}>
+      <div className="flex justify-center mb-3">{icon}</div>
       <h4 className="font-bold font-headline text-lg">{title}</h4>
-      <p className="text-muted-foreground">{description}</p>
-    </div>
-  </div>
+      <p className="text-muted-foreground text-sm">{description}</p>
+    </Card>
 );
 
 
@@ -92,11 +86,41 @@ export default function SolutionPage() {
         </div>
 
         {/* Timeline */}
-        <div className="space-y-2">
-            <TimelineStep day="★" title="Resultado atual: HOJE" description="Seu bebê só dorme mamando" />
-            <TimelineStep day="1" title="Após 1 dia com o Soninho sem peito" description="Aprenda a técnica" />
-            <TimelineStep day="2" title="Após 2 dias com o Soninho sem peito" description="Você já vê resultados" />
-            <TimelineStep day="3" title="Após 3 dias com o Soninho sem peito" description="Seu bebê dormindo sem peito" />
+        <div className="space-y-8">
+            <div className="relative flex flex-col md:flex-row items-stretch justify-center gap-4">
+                <div className="absolute top-1/2 left-0 w-full h-px bg-primary/30 hidden md:block" />
+                <div className="absolute top-0 left-1/2 w-px h-full bg-primary/30 md:hidden" />
+
+                <div className="relative z-10 flex flex-col items-center w-full md:w-auto">
+                    <TimelineStep 
+                        icon={<Star className="h-8 w-8 text-yellow-500 fill-yellow-400" />}
+                        title="HOJE: Resultado Atual"
+                        description="Seu bebê só dorme mamando."
+                        isCurrent
+                    />
+                </div>
+                <div className="relative z-10 flex flex-col items-center w-full md:w-auto">
+                    <TimelineStep 
+                        icon={<Calendar className="h-8 w-8 text-primary" />}
+                        title="Dia 1: Aprenda a Técnica"
+                        description="Aprenda o passo a passo do método."
+                    />
+                </div>
+                <div className="relative z-10 flex flex-col items-center w-full md:w-auto">
+                    <TimelineStep 
+                        icon={<Eye className="h-8 w-8 text-primary" />}
+                        title="Dia 2: Primeiros Resultados"
+                        description="Você começa a ver as mudanças."
+                    />
+                </div>
+                <div className="relative z-10 flex flex-col items-center w-full md:w-auto">
+                    <TimelineStep 
+                        icon={<Rocket className="h-8 w-8 text-primary" />}
+                        title="Dia 3: A Conquista"
+                        description="Seu bebê dormindo sem peito."
+                    />
+                </div>
+            </div>
         </div>
         
         {/* Desafio Prático */}
