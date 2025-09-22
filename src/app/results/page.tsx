@@ -17,7 +17,7 @@ const BeforeAfterSection = ({ title, imageId, items, checkColor }: { title: stri
     <div className="text-center space-y-4">
       <h3 className="text-2xl font-headline">{title}</h3>
       {imageDetails && (
-         <div className="relative w-full max-w-md mx-auto aspect-[16/9]">
+         <div className="relative w-full max-w-md mx-auto aspect-video">
             <Image
               src={imageDetails.imageUrl}
               alt={imageDetails.description}
@@ -123,6 +123,13 @@ export default function ResultsPage() {
               />
             </div>
             
+            <AnalysisPoints points={analysisPoints} />
+
+            <div className="text-center">
+              <Button size="lg" onClick={handleSeeSolution}>
+                Ver Solução Recomendada
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
