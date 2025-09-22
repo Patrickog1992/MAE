@@ -57,23 +57,24 @@ function AnalysisContent() {
     const answersParam = searchParams.get('answers');
 
     const runAnalysis = async () => {
-      if (answersParam) {
-        try {
-          const answers = JSON.parse(answersParam);
-          if (Array.isArray(answers) && answers.length > 0) {
-            const result = await analyzeQuizResponses({ answers });
-            if (active) {
-              setAnalysisResult(result);
-            }
-          } else {
-             if (active) setError('No answers provided.');
+      if (!answersParam) {
+        if (active) setError('Nenhuma resposta foi encontrada. Por favor, comece o quiz novamente.');
+        return;
+      }
+      
+      try {
+        const answers = JSON.parse(answersParam);
+        if (Array.isArray(answers) && answers.length > 0) {
+          const result = await analyzeQuizResponses({ answers });
+          if (active) {
+            setAnalysisResult(result);
           }
-        } catch (e) {
-          console.error('Failed to parse or analyze answers:', e);
-          if (active) setError('Invalid answers format or analysis failed.');
+        } else {
+           if (active) setError('Nenhuma resposta fornecida.');
         }
-      } else {
-        if (active) setError('No answers parameter found.');
+      } catch (e) {
+        console.error('Falha ao analisar as respostas:', e);
+        if (active) setError('Ocorreu um erro ao processar suas respostas. Por favor, tente novamente.');
       }
     };
 
@@ -203,7 +204,7 @@ function AnalysisContent() {
               <CardTitle className="text-3xl font-headline text-destructive">Ocorreu um erro</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 p-8">
-              <p>Não foi possível analisar suas respostas. Por favor, tente novamente.</p>
+              <p>{error}</p>
               <Button onClick={() => router.push('/')}>Voltar ao Início</Button>
             </CardContent>
           </Card>
