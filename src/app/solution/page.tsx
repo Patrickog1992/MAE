@@ -169,11 +169,11 @@ export default function SolutionPage() {
             </div>
             
             <div className="bg-primary/20 text-left p-4 rounded-lg text-sm space-y-2">
-                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #1:</span> Guia de Rotinas para Sonecas (R$47)</span></div>
-                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #2:</span> Aula sobre Saltos de Desenvolvimento (R$67)</span></div>
-                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #3:</span> Acesso à Comunidade VIP no WhatsApp (R$97)</span></div>
-                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #4:</span> E-book de Atividades Calmantes (R$37)</span></div>
-                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #5:</span> Cardápio Anti-Cólicas e Prisão de Ventre (R$47)</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #1:</span> Guia de Rotinas para Sonecas</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #2:</span> Aula sobre Saltos de Desenvolvimento</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #3:</span> Acesso à Comunidade VIP no WhatsApp</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #4:</span> E-book de Atividades Calmantes</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #5:</span> Cardápio Anti-Cólicas e Prisão de Ventre</span></div>
             </div>
 
             <a href="https://pay.kirvano.com/bc8f5b76-0a84-4cc6-82c6-3705b9492639">
