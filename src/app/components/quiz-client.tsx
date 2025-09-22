@@ -31,6 +31,7 @@ export function QuizClient() {
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentStep(step);
+      router.push(`/?step=${step}`, { scroll: false });
       setIsAnimating(false);
     }, 300); // Duration of the fade-out animation
   };
@@ -62,7 +63,7 @@ export function QuizClient() {
 
   const finishQuiz = (finalAnswers: Record<string, string> = answers) => {
     const answersAsArray = Object.entries(finalAnswers).map(([key, value]) => `${key}: ${value}`);
-    router.push(`/analysis?answers=${encodeURIComponent(JSON.stringify(answersAsArray))}`);
+    router.push(`/generating-analysis?answers=${encodeURIComponent(JSON.stringify(answersAsArray))}`);
   };
 
   const stepData = quizSteps[currentStep];
@@ -82,7 +83,7 @@ export function QuizClient() {
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-4 md:gap-6 p-4 md:p-6">
         {imageDetails && (
-          <div className="relative w-full aspect-[3/2] rounded-lg overflow-hidden">
+           <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
             <Image
               src={imageDetails.imageUrl}
               alt={imageDetails.description}

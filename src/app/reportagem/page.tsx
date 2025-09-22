@@ -30,7 +30,7 @@ export default function ReportagemPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col items-center gap-6 p-4 md:p-8">
-            <div className="relative w-full aspect-[16/9]">
+            <div className="relative w-full aspect-video">
               <Image
                 src="https://i.imgur.com/I9il9aV.png"
                 alt="Reportagem sobre o método Soninho sem Peito"

@@ -154,7 +154,7 @@ export const quizSteps: QuizStep[] = [
     ],
     buttonText: '',
     questionKey: 'method_openness',
-    progress: 90,
+    progress: 100,
   },
 ];
 
@@ -172,5 +172,5 @@ const iconComponents: { [key: string]: React.FC<any> } = {
 
 export const getIcon = (name: string) => {
   const IconComponent = iconComponents[name];
-  return IconComponent ? <IconComponent className="h-6 w-6 text-accent flex-shrink-0" /> : null;
+  return IconComponent ? <IconComponent className="h-6 w-6 text-primary flex-shrink-0" /> : null;
 };
