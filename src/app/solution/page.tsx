@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ShieldCheck, Star, Calendar, Eye, Rocket } from 'lucide-react';
+import { Check, ShieldCheck, Star, Calendar, Eye, Rocket, Gift } from 'lucide-react';
 import Image from 'next/image';
 
 const testimonials = [
@@ -161,11 +161,21 @@ export default function SolutionPage() {
         {/* CTA Card */}
         <Card className="bg-gradient-to-br from-primary/80 via-primary to-accent/80 text-primary-foreground shadow-2xl overflow-hidden">
           <div className="p-8 md:p-12 space-y-6 text-center">
+            <h3 className="text-2xl font-bold font-headline">Acesso Imediato ao Método + 5 Bônus Exclusivos</h3>
             <div className="space-y-2">
               <p className="text-xl line-through opacity-80">De R$197,00</p>
               <p className="text-6xl font-extrabold">por R$ 47,00</p>
               <p className="text-lg opacity-90">ou 12x de R$ 4,70</p>
             </div>
+            
+            <div className="bg-primary/20 text-left p-4 rounded-lg text-sm space-y-2">
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #1:</span> Guia de Rotinas para Sonecas (R$47)</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #2:</span> Aula sobre Saltos de Desenvolvimento (R$67)</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #3:</span> Acesso à Comunidade VIP no WhatsApp (R$97)</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #4:</span> E-book de Atividades Calmantes (R$37)</span></div>
+                <div className="flex items-start gap-2"><Gift className="h-5 w-5 mt-0.5 text-yellow-300 flex-shrink-0" /><span><span className="font-bold">Bônus #5:</span> Cardápio Anti-Cólicas e Prisão de Ventre (R$47)</span></div>
+            </div>
+
             <a href="https://pay.kirvano.com/bc8f5b76-0a84-4cc6-82c6-3705b9492639">
               <Button size="lg" className="w-full text-xl font-bold bg-green-500 hover:bg-green-600 text-white shadow-lg transform hover:scale-110 transition-transform duration-300 animate-pulse">
                 QUERO COMEÇAR AGORA
