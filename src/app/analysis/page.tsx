@@ -53,25 +53,31 @@ function AnalysisContent() {
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
+    let active = true;
     const answersParam = searchParams.get('answers');
-    if (answersParam) {
-      try {
-        const answers = JSON.parse(answersParam);
-        if (Array.isArray(answers) && answers.length > 0) {
-          analyzeQuizResponses({ answers })
-            .then(result => {
+
+    const runAnalysis = async () => {
+      if (answersParam) {
+        try {
+          const answers = JSON.parse(answersParam);
+          if (Array.isArray(answers) && answers.length > 0) {
+            const result = await analyzeQuizResponses({ answers });
+            if (active) {
               setAnalysisResult(result);
-            })
-            .catch(err => {
-              console.error('Analysis failed:', err);
-              setError('Failed to analyze responses.');
-            });
+            }
+          } else {
+             if (active) setError('No answers provided.');
+          }
+        } catch (e) {
+          console.error('Failed to parse or analyze answers:', e);
+          if (active) setError('Invalid answers format or analysis failed.');
         }
-      } catch (e) {
-        console.error('Failed to parse answers:', e);
-        setError('Invalid answers format.');
+      } else {
+        if (active) setError('No answers parameter found.');
       }
-    }
+    };
+
+    runAnalysis();
 
     const timer = setInterval(() => {
       setProgress(prev => {
@@ -79,16 +85,21 @@ function AnalysisContent() {
           clearInterval(timer);
           return 100;
         }
-        return prev + 2.5; // Fills in 4 seconds
+        return prev + 5; 
       });
-    }, 100);
+    }, 200);
 
-    return () => clearInterval(timer);
+    return () => {
+      active = false;
+      clearInterval(timer);
+    };
   }, [searchParams]);
 
   useEffect(() => {
     if (progress >= 100 && (analysisResult || error)) {
-      setIsFinished(true);
+      // Small delay to prevent flash of loading content if analysis finishes quickly
+      const timeout = setTimeout(() => setIsFinished(true), 100);
+      return () => clearTimeout(timeout);
     }
   }, [progress, analysisResult, error]);
 
@@ -173,6 +184,34 @@ function AnalysisContent() {
           Soninho sem Peito todos os direitos reservados 2025
         </footer>
       </main>
+    );
+  }
+  
+  if (isFinished && error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <div className="flex flex-col items-center w-full flex-1 justify-center">
+           <Image
+              src="https://i.imgur.com/FuMHzNS.png"
+              alt="Soninho sem Peito Logo"
+              width={100}
+              height={100}
+              className="mb-6"
+          />
+          <Card className="w-full max-w-lg text-center shadow-2xl">
+            <CardHeader>
+              <CardTitle className="text-3xl font-headline text-destructive">Ocorreu um erro</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6 p-8">
+              <p>Não foi possível analisar suas respostas. Por favor, tente novamente.</p>
+              <Button onClick={() => router.push('/')}>Voltar ao Início</Button>
+            </CardContent>
+          </Card>
+        </div>
+        <footer className="w-full text-center p-4 text-sm text-muted-foreground mt-8">
+          Soninho sem Peito todos os direitos reservados 2025
+        </footer>
+      </div>
     );
   }
 
