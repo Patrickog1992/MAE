@@ -166,9 +166,11 @@ export default function SolutionPage() {
               <p className="text-6xl font-extrabold">por R$ 47,00</p>
               <p className="text-lg opacity-90">ou 12x de R$ 4,70</p>
             </div>
-            <Button size="lg" className="w-full text-xl font-bold bg-green-500 hover:bg-green-600 text-white shadow-lg transform hover:scale-105 transition-transform">
-              QUERO COMEÇAR AGORA
-            </Button>
+            <a href="https://pay.kirvano.com/bc8f5b76-0a84-4cc6-82c6-3705b9492639">
+              <Button size="lg" className="w-full text-xl font-bold bg-green-500 hover:bg-green-600 text-white shadow-lg transform hover:scale-105 transition-transform">
+                QUERO COMEÇAR AGORA
+              </Button>
+            </a>
             <div className="space-y-2 pt-4 text-left md:text-center text-sm">
                 <div className="flex items-center gap-2 justify-center">
                     <ShieldCheck className="h-4 w-4" />
@@ -197,9 +199,11 @@ export default function SolutionPage() {
 
         {/* Final CTA */}
          <div className="text-center">
-            <Button size="lg" className="w-full max-w-md text-xl font-bold bg-green-500 hover:bg-green-600 text-white shadow-lg">
-              QUERO COMEÇAR AGORA
-            </Button>
+            <a href="https://pay.kirvano.com/bc8f5b76-0a84-4cc6-82c6-3705b9492639">
+              <Button size="lg" className="w-full max-w-md text-xl font-bold bg-green-500 hover:bg-green-600 text-white shadow-lg">
+                QUERO COMEÇAR AGORA
+              </Button>
+            </a>
         </div>
 
       </div>
