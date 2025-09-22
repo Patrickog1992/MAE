@@ -22,10 +22,8 @@ function GeneratingAnalysisContent() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentStep(prev => {
-        if (prev >= analysisSteps.length - 1) {
+        if (prev >= analysisSteps.length) {
           clearInterval(timer);
-          const answers = searchParams.get('answers');
-          router.replace(`/analysis?answers=${answers || ''}`);
           return prev;
         }
         return prev + 1;
@@ -33,7 +31,14 @@ function GeneratingAnalysisContent() {
     }, 1200); // Wait 1.2 seconds per step
 
     return () => clearInterval(timer);
-  }, [router, searchParams]);
+  }, []);
+
+  useEffect(() => {
+    if (currentStep >= analysisSteps.length) {
+      const answers = searchParams.get('answers');
+      router.replace(`/analysis?answers=${answers || ''}`);
+    }
+  }, [currentStep, router, searchParams]);
   
   return (
      <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4 bg-background">
