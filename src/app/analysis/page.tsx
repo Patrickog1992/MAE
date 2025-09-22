@@ -89,11 +89,8 @@ function AnalysisContent() {
   useEffect(() => {
     if (progress >= 100 && (analysisResult || error)) {
       setIsFinished(true);
-      if (error) {
-        router.push('/');
-      }
     }
-  }, [progress, analysisResult, router, error]);
+  }, [progress, analysisResult, error]);
 
   const loadingSteps = [
     'Calculando o potencial de sono do seu bebê',
@@ -221,5 +218,3 @@ export default function AnalysisPage() {
     </Suspense>
   );
 }
-
-    
