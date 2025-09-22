@@ -23,20 +23,20 @@ export default function ReportagemPage() {
           height={100}
           className="mb-6"
         />
-        <Card className="w-full max-w-2xl shadow-2xl">
+        <Card className="w-full max-w-4xl shadow-2xl">
           <CardHeader>
             <CardTitle className="text-2xl md:text-3xl text-center font-headline">
               Método Soninho sem Peito ganha destaque na mídia
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col items-center gap-6">
-            <div className="relative w-full aspect-video">
+          <CardContent className="flex flex-col items-center gap-6 p-4 md:p-8">
+            <div className="relative w-full aspect-[16/9]">
               <Image
                 src="https://i.imgur.com/I9il9aV.png"
                 alt="Reportagem sobre o método Soninho sem Peito"
                 fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-contain rounded-lg"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
               />
             </div>
             <Button size="lg" onClick={handleContinue}>

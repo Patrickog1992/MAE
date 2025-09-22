@@ -15,6 +15,7 @@ export function QuizClient() {
   const searchParams = useSearchParams();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [isAnimating, setIsAnimating] = useState(false);
   
   useEffect(() => {
     const step = searchParams.get('step');
@@ -26,6 +27,13 @@ export function QuizClient() {
     }
   }, [searchParams]);
 
+  const navigateToStep = (step: number) => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentStep(step);
+      setIsAnimating(false);
+    }, 300); // Duration of the fade-out animation
+  };
 
   const handleNext = () => {
      if (stepData.questionKey === 'intro2') {
@@ -34,7 +42,7 @@ export function QuizClient() {
     }
     
     if (currentStep < quizSteps.length - 1) {
-      setCurrentStep(currentStep + 1);
+      navigateToStep(currentStep + 1);
     } else {
       finishQuiz();
     }
@@ -46,7 +54,7 @@ export function QuizClient() {
     setAnswers(newAnswers);
 
     if (currentStep < quizSteps.length - 1) {
-      setCurrentStep(currentStep + 1);
+       navigateToStep(currentStep + 1);
     } else {
       finishQuiz(newAnswers);
     }
@@ -62,7 +70,7 @@ export function QuizClient() {
   const imageDetails = stepData.image ? PlaceHolderImages.find(img => img.id === stepData.image!.id) : null;
 
   return (
-    <Card className="w-full max-w-2xl shadow-2xl bg-card">
+    <Card className={`w-full max-w-2xl shadow-2xl bg-card transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
       <CardHeader className="p-4 md:p-6">
         <Progress value={stepData.progress} className="w-full h-2 mb-4" />
         <CardTitle className="text-2xl md:text-3xl text-center font-headline">{stepData.title}</CardTitle>
