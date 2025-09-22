@@ -47,68 +47,14 @@ const BeforeAfterSection = ({ title, imageId, items, checkColor }: { title: stri
 function AnalysisContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [progress, setProgress] = useState(0);
-  const [analysisResult, setAnalysisResult] = useState<QuizResponsesOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
-    let active = true;
     const answersParam = searchParams.get('answers');
-
-    const runAnalysis = async () => {
-      if (!answersParam) {
-        if (active) setError('Nenhuma resposta foi encontrada. Por favor, comece o quiz novamente.');
-        return;
-      }
-      
-      try {
-        const answers = JSON.parse(answersParam);
-        if (Array.isArray(answers) && answers.length > 0) {
-          const result = await analyzeQuizResponses({ answers });
-          if (active) {
-            setAnalysisResult(result);
-          }
-        } else {
-           if (active) setError('Nenhuma resposta fornecida. Por favor, comece o quiz novamente.');
-        }
-      } catch (e) {
-        console.error('Falha ao analisar as respostas:', e);
-        if (active) setError('Ocorreu um erro ao processar suas respostas. Por favor, tente novamente.');
-      }
-    };
-
-    runAnalysis();
-
-    const timer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          return 100;
-        }
-        return prev + 5; 
-      });
-    }, 200);
-
-    return () => {
-      active = false;
-      clearInterval(timer);
-    };
-  }, [searchParams]);
-
-  useEffect(() => {
-    if (progress >= 100 && (analysisResult || error)) {
-      const timeout = setTimeout(() => setIsFinished(true), 100);
-      return () => clearTimeout(timeout);
+    if (!answersParam) {
+      setError('Nenhuma resposta foi encontrada. Por favor, comece o quiz novamente.');
     }
-  }, [progress, analysisResult, error]);
-
-  const loadingSteps = [
-    'Calculando o potencial de sono do seu bebê',
-    'Identificando padrões de comportamento',
-    'Personalizando recomendações',
-    'Preparando seu resultado',
-  ];
+  }, [searchParams]);
 
   const beforeItems = [
     'Bebê só dorme no peito → mãe presa, exausta.',
@@ -135,59 +81,8 @@ function AnalysisContent() {
   const handleSeeSolution = () => {
     router.push('/loading-solution');
   };
-
-  if (isFinished && analysisResult) {
-    return (
-      <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
-        <div className="flex flex-col items-center w-full flex-1 justify-center">
-          <Image
-              src="https://i.imgur.com/FuMHzNS.png"
-              alt="Soninho sem Peito Logo"
-              width={100}
-              height={100}
-              className="mb-6"
-          />
-          <Card className="w-full max-w-4xl shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-4xl font-headline">Resultado da sua análise</CardTitle>
-              <CardDescription className="text-lg pt-2">
-                Com base em suas respostas, identificamos o seguinte:
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-12 p-4 md:p-8">
-              <div className="grid md:grid-cols-2 gap-12">
-                <BeforeAfterSection 
-                  title="Você antes do Soninho sem peito"
-                  imageId="quiz-results-before"
-                  items={beforeItems}
-                  checkColor="text-red-500"
-                />
-                <BeforeAfterSection 
-                  title="Você depois do Soninho sem peito"
-                  imageId="quiz-results-after"
-                  items={afterItems}
-                  checkColor="text-green-500"
-                />
-              </div>
-              
-              <AnalysisPoints points={analysisPoints} />
-
-              <div className="text-center">
-                <Button size="lg" onClick={handleSeeSolution}>
-                  Ver Solução Recomendada
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-        <footer className="w-full text-center p-4 text-sm text-muted-foreground mt-8">
-          Soninho sem Peito todos os direitos reservados 2025
-        </footer>
-      </main>
-    );
-  }
   
-  if (isFinished && error) {
+  if (error) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
         <div className="flex flex-col items-center w-full flex-1 justify-center">
@@ -215,44 +110,60 @@ function AnalysisContent() {
     );
   }
 
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
       <div className="flex flex-col items-center w-full flex-1 justify-center">
         <Image
-          src="https://i.imgur.com/FuMHzNS.png"
-          alt="Soninho sem Peito Logo"
-          width={100}
-          height={100}
-          className="mb-6"
+            src="https://i.imgur.com/FuMHzNS.png"
+            alt="Soninho sem Peito Logo"
+            width={100}
+            height={100}
+            className="mb-6"
         />
-        <Card className="w-full max-w-lg text-center shadow-2xl">
-          <CardHeader>
-            <CardTitle className="text-3xl font-headline">Analisando suas respostas...</CardTitle>
+        <Card className="w-full max-w-4xl shadow-2xl">
+          <CardHeader className="text-center">
+            <CardTitle className="text-4xl font-headline">Resultado da sua análise</CardTitle>
+            <CardDescription className="text-lg pt-2">
+              Com base em suas respostas, identificamos o seguinte:
+            </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6 p-8">
-            <Progress value={progress} className="w-full h-3" />
-            <ul className="text-left space-y-3 text-lg">
-              {loadingSteps.map((step, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <Check className="h-6 w-6 text-primary" />
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ul>
+          <CardContent className="space-y-12 p-4 md:p-8">
+            <div className="grid md:grid-cols-2 gap-12">
+              <BeforeAfterSection 
+                title="Você antes do Soninho sem peito"
+                imageId="quiz-results-before"
+                items={beforeItems}
+                checkColor="text-red-500"
+              />
+              <BeforeAfterSection 
+                title="Você depois do Soninho sem peito"
+                imageId="quiz-results-after"
+                items={afterItems}
+                checkColor="text-green-500"
+              />
+            </div>
+            
+            <AnalysisPoints points={analysisPoints} />
+
+            <div className="text-center">
+              <Button size="lg" onClick={handleSeeSolution}>
+                Ver Solução Recomendada
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
       <footer className="w-full text-center p-4 text-sm text-muted-foreground mt-8">
         Soninho sem Peito todos os direitos reservados 2025
       </footer>
-    </div>
+    </main>
   );
 }
 
+
 export default function AnalysisPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Carregando...</div>}>
       <AnalysisContent />
     </Suspense>
   );
