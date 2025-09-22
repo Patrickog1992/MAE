@@ -70,7 +70,7 @@ function AnalysisContent() {
             setAnalysisResult(result);
           }
         } else {
-           if (active) setError('Nenhuma resposta fornecida.');
+           if (active) setError('Nenhuma resposta fornecida. Por favor, comece o quiz novamente.');
         }
       } catch (e) {
         console.error('Falha ao analisar as respostas:', e);
@@ -98,7 +98,6 @@ function AnalysisContent() {
 
   useEffect(() => {
     if (progress >= 100 && (analysisResult || error)) {
-      // Small delay to prevent flash of loading content if analysis finishes quickly
       const timeout = setTimeout(() => setIsFinished(true), 100);
       return () => clearTimeout(timeout);
     }
